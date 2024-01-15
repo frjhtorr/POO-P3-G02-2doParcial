@@ -122,7 +122,7 @@ public class MenuFeriasController implements Initializable {
         
 
    @FXML
-    private void switchToAuspiciantes(ActionEvent event) throws Exception{
+    private void switchToAuspiciantes() throws Exception{
         App.setRoot("MenuVerAuspiciantes");
         
     }
