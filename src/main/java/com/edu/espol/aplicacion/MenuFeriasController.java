@@ -16,6 +16,9 @@ import javafx.scene.layout.VBox;
  *
  * @author Josh
  */
+/*
+Hola, este es un comentario de prueba
+*/
 public class MenuFeriasController implements Initializable {
 
     @FXML
