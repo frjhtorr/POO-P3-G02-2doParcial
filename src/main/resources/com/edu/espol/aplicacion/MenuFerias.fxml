@@ -11,7 +11,11 @@
       <HBox alignment="CENTER" prefHeight="51.0" prefWidth="600.0" spacing="30.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="buttonNuevaFeria" mnemonicParsing="false" text="Nueva Feria" />
+<<<<<<< HEAD
             <Button fx:id="buttonVerFeria" mnemonicParsing="false" onAction="#switchToAuspiciantes" text="Ver Auspiciantes" />
+=======
+            <Button fx:id="VerAuspi" mnemonicParsing="false" onAction="#switchToAuspiciantes" text="Ver Auspiciantes" />
+>>>>>>> f24812f3a0e24e54809c75964e4836fecd28f8e5
          </children>
       </HBox>
    </bottom>

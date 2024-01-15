@@ -116,15 +116,14 @@ public class MenuFeriasController implements Initializable {
           stfe.show();
            });
         
-         
         }
+       // HOLA COMPANEROS DEL ALMA, UN GUSTO TRABAJR CON USTEDES
     }
         
 
-   @FXML
+    @FXML
     private void switchToAuspiciantes() throws Exception{
-        App.setRoot("MenuVerAuspiciantes");
-        
+        App.setRoot("MenuVerAuspiciantes");   
     }
     
     }
