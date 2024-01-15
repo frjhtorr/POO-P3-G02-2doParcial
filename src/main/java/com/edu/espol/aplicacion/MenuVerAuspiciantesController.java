@@ -61,6 +61,7 @@ public class MenuVerAuspiciantesController implements Initializable{
           hb1.setSpacing(10);
           vbAuspiciantes.getChildren().add(hb1);
     } 
+        // QUE TAL MUCHAHCOS, FELIZ ANIO
 }
     
 }
