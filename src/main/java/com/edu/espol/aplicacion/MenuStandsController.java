@@ -13,6 +13,7 @@ import com.espol.feria.*;
 import com.espol.personas.*;
 import com.espol.redes.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -54,7 +55,7 @@ public class MenuStandsController implements Initializable {
         int j = 0;
         for(String letra : letras){
             Seccion seccion = new Seccion();
-            ArrayList<Stand> stands = new ArrayList<Stand>();
+            ArrayList<Stand> stands = new ArrayList<>();
             int cant = 4;
             seccion.setCantStands(cant);
             seccion.setId(letra);
@@ -87,17 +88,28 @@ public class MenuStandsController implements Initializable {
            int fila = 0;
             Seccion[] lstsec = f.getSecciones();
            for(Seccion secc: lstsec){
+                Label label = new Label("Seccion" + Arrays.asList(lstsec).indexOf(secc));
                 HBox HBsec = new HBox();
                 HBsec.setSpacing(10);
                 ArrayList<Stand> lstStands = secc.getArrayStands();
                 for(Stand stand : lstStands){
-                VBox VBstand = new VBox(new Label(stand.getCod()));
+                Button btnStand = new Button(stand.getCod());
+                btnStand.setOnAction(e -> descripcionStand(stand));
+                btnStand.setStyle("-fx-background-color: " + (stand.estaReservado() ? "red" : "green"));
+
+                //VBox VBstand = new VBox(new Label(stand.getCod()));
+                VBox VBstand = new VBox(btnStand);
                 HBsec.getChildren().add(VBstand);
                 }
                 gp.add(HBsec,0, fila);
                 fila++;
-            } 
+            }     
         }
+    private void descripcionStand(Stand stand) {
+    System.out.println(stand.toString());
+    // Agrega aquí la lógica que deseas realizar al hacer clic en el botón
+}
+
     }
  
 
