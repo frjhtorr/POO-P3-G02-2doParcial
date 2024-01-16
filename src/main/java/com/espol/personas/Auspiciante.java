@@ -5,6 +5,8 @@
 package com.espol.personas;
 
 import com.espol.personas.*;
+import com.espol.redes.CuentaRedSocial;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -14,6 +16,23 @@ import java.util.Scanner;
 public class Auspiciante extends Persona{
     //VARIABLES DE INSTANCIA
     private SectorCubierto sector;
+    
+ /*/ CONSTRUCTORES ---------------------------------------------------
+  public Auspiciante(String cedula, String nombre, String telefono,
+      String email, String direccion, String web, String owner,
+      ArrayList<CuentaRedSocial> lstRedes, SectorCubierto sector) {
+
+    super(cedula, nombre, telefono, email, direccion, web, owner, lstRedes);
+    this.sector = sector;
+  }
+  
+  public Auspiciante(){
+    super(); 
+  }
+
+    public Auspiciante(String string, String arturo_Carrera, String string0, String artAUSP2outlookes, String perimetral_km_12, String salud_cc, String auspicio_2, CuentaRedSocial ac, SectorCubierto sectorCubierto) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }*/
     
     public SectorCubierto getSectorCubierto(){
         return sector;

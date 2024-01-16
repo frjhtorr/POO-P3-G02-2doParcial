@@ -119,6 +119,15 @@ public class MenuFeriasController implements Initializable {
           bp.setTop(new Text("Feria"));
           stfe.setScene(new Scene(bp));
           stfe.show();
+          
+          
+          btstand.setOnAction(e -> {
+              try {
+                  switchToStands();
+              } catch (Exception ex) {
+              }
+          });
+
            });
         
         }

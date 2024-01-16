@@ -40,6 +40,10 @@ public class MenuVerAuspiciantesController implements Initializable{
     ArrayList <Auspiciante> auspigen = new ArrayList<>();
     Auspiciante au1 = crearAuspiciante();
     
+    
+    CuentaRedSocial ac = new CuentaRedSocial(RedSocial.FACEBOOK,"Arturro Carrera");
+    //Auspiciante au2 = new Auspiciante("9278199370","Arturo Carrera","0960858517","ArtAUSP2@outlook.es","Perimetral km 1/2", "SALUD CC","Auspicio 2",ac,SectorCubierto.SALUD);
+    
 
      public Auspiciante crearAuspiciante(){
         //Auspiciante 1
@@ -57,11 +61,13 @@ public class MenuVerAuspiciantesController implements Initializable{
         lstRedes1.add(crs1);
         aus1.setLstRedes(lstRedes1);
         return aus1;
+
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         auspigen.add(au1);
+        //auspigen.add(au2);
         vbAuspiciantes.setSpacing(30);
         vbAuspiciantes.getChildren().add(new HBox(new Text("Numero de cedula de cada auspiciante")));
         for(Auspiciante ausp: auspigen){ 
