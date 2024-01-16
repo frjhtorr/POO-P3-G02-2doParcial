@@ -63,13 +63,11 @@ public class Stand {
             return true;
         }
     }
-    
+
     @Override
     public String toString() {
-    return ""
-           /*Stand:
-           Codigo: """ + this.cod + "\nFecha Asignada: " + this.fechaAsigna
-        + "\nPersona Asignada: " + ((this.owner == null) ? "Ninguna" : owner.toString())*/;
-
-  }
+        return "Stand{" + "cod=" + cod + ", numAsig=" + numAsig ;
+    }
+    
+  
 }

@@ -13,6 +13,7 @@
             <Button fx:id="buttonNuevaFeria" mnemonicParsing="false" text="Nueva Feria" />
 
             <Button fx:id="VerAuspi" mnemonicParsing="false" onAction="#switchToAuspiciantes" text="Ver Auspiciantes" />
+            <Button fx:id="Verstands" mnemonicParsing="false" onAction="#switchToStands" text="Ver Stands" />
 
          </children>
       </HBox>

@@ -36,7 +36,10 @@ public class MenuFeriasController implements Initializable {
     @FXML
     private VBox VBoxFerias;
     @FXML
-    private Button VerAuspi;
+    private Button VerAuspi;   
+    @FXML
+    private Button Verstands;
+ 
     // Comienzo a definir algunas ferias y a tener la lista
     
     public static Feria crearFeria(){
@@ -81,6 +84,8 @@ public class MenuFeriasController implements Initializable {
     
        Feria feria1 = crearFeria();
        ArrayList<Feria> ferias = new ArrayList<Feria>();
+       
+     
  
     
     /**
@@ -117,7 +122,6 @@ public class MenuFeriasController implements Initializable {
            });
         
         }
-       // HOLA COMPANEROS DEL ALMA, UN GUSTO TRABAJR CON USTEDES
     }
         
 
@@ -125,6 +129,10 @@ public class MenuFeriasController implements Initializable {
     private void switchToAuspiciantes() throws Exception{
         App.setRoot("MenuVerAuspiciantes");   
     }
-    
+    @FXML
+    private void switchToStands() throws Exception{
+        App.setRoot("MenuStands");   
     }
+    
+}
 

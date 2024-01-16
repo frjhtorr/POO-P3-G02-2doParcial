@@ -30,4 +30,10 @@ public class CuentaRedSocial {
     public void setRedSocial(String red){
         this.red=RedSocial.valueOf(red);
     }
+
+    @Override
+    public String toString() {
+        return "CuentaRedSocial{" + "cuenta=" + cuenta + ", red=" + red + '}';
+    }
+    
 }

@@ -15,9 +15,18 @@ import com.espol.feria.*;
 import com.espol.personas.*;
 import com.espol.redes.*;
 import java.util.ArrayList;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 
 
@@ -54,12 +63,56 @@ public class MenuVerAuspiciantesController implements Initializable{
     public void initialize(URL url, ResourceBundle rb) {
         auspigen.add(au1);
         vbAuspiciantes.setSpacing(30);
-        vbAuspiciantes.getChildren().add(new Text("Numero de cedula"));
+        vbAuspiciantes.getChildren().add(new HBox(new Text("Numero de cedula de cada auspiciante")));
         for(Auspiciante ausp: auspigen){ 
           Button b = new Button("Ver info");        
-          HBox hb1 = new HBox(new Text("Nombre: "+ausp.getNombre()), new Text(ausp.getCedula()), b);
+          //b.setPrefWidth(15);
+          //b.prefHeight(15);
+          HBox hb1 = new HBox(new Text(ausp.getCedula()), new Text(ausp.getOwner()),  b);
           hb1.setSpacing(10);
           vbAuspiciantes.getChildren().add(hb1);
+          b.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->{
+              
+      
+        
+        VBox redesVBox = new VBox();
+        redesVBox.getChildren().add(new Label("Redes Sociales:"));
+        for (CuentaRedSocial red : ausp.getLstRedes()) {
+            redesVBox.getChildren().add(new Label(red.toString()));
+        }
+        
+        /*
+        VBox standsVBox = new VBox();
+        standsVBox.getChildren().add(new Label("Stands:"));
+        for (Stand stand : ausp.getLstStand()) {
+            standsVBox.getChildren().add(new Label(stand.toString()));
+        }
+        */
+          VBox infoVBox = new VBox();
+        infoVBox.getChildren().add(new Label("Cédula: " + ausp.getCedula()));
+        infoVBox.getChildren().add(new Label("Nombre: " + ausp.getNombre()));
+        infoVBox.getChildren().add(new Label("Teléfono: " + ausp.getTelefono()));
+        infoVBox.getChildren().add(new Label("Email: " + ausp.getEmail()));
+        infoVBox.getChildren().add(new Label("Dirección: " + ausp.getDireccion()));
+        infoVBox.getChildren().add(new Label("Web: " + ausp.getWeb()));
+        infoVBox.getChildren().add(new Label("Owner: " + ausp.getOwner()));
+
+        // Agregar los VBox al GridPane en diferentes columnas
+
+            
+        GridPane gp = new GridPane();
+        gp.setHgap(10);
+        gp.setVgap(10);
+        gp.setPadding(new Insets(20,20,20,20));
+        gp.add(infoVBox,2,0);
+        gp.add(redesVBox, 0,0);
+        //gp.add(standsVBox, 1, 0);
+        Stage auspStage = new Stage();
+        Scene scene = new Scene(gp);
+        auspStage.setScene(scene);
+        auspStage.show();
+          });
+          
     } 
         // QUE TAL MUCHAHCOS, FELIZ ANIO
 }
