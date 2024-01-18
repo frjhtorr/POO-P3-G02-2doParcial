@@ -17,9 +17,9 @@
 
             <Button fx:id="VerAuspi" mnemonicParsing="false" onAction="#switchToAuspiciantes" text="Ver Auspiciantes" />
             <Button fx:id="Verstands" mnemonicParsing="false" onAction="#switchToStands" text="Ver Stands" />
-            <ImageView disable="true" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="im" disable="true" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../../../Downloads/logo%20espol%202-01.png" />
+                  <Image url="@../../../../../java/imagenes/logo%20espol%202-01.png" />
                </image>
             </ImageView>
 
