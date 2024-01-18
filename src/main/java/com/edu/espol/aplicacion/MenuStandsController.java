@@ -18,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -193,13 +194,30 @@ public class MenuStandsController implements Initializable {
         reservarButton.setOnAction(event -> {
         if (stand.isReservado()) {
             mostrarAlerta("Reserva no disponible", "El stand ya está ocupado");
+            
         }else{
-         /*   //Solicitar el ingreso de un nombre o numero de cedula para poder buscar
-            if(cantidad de ){
+        VBox standDescripcio = new VBox(); // Crear VBox para la descripción del stand
+        Label lblCo = new Label("VERIFICACION");
+
+        Label c = new Label("Ingrese el número de cédula:");
+        TextField ced = new TextField();
+        Button botonCed = new Button("Buscar");
+        Label resultadoLabel = new Label("Resultado:");
+
+        botonCed.setOnAction(searchEvent -> {
+            String numeroCedula = ced.getText();
+            
+            if (numeroCedula != null && !numeroCedula.isEmpty()) {
                 
+                resultadoLabel.setText("Resultado: Cliente encontrado con cédula " + numeroCedula);
+            } else {
+                mostrarAlerta("Campo vacío", "Por favor, ingrese un número de cédula válido.");
             }
-*/
-        }
+        });
+
+        standDescripcio.getChildren().addAll(lblCo, c, ced, botonCed, resultadoLabel);
+        bp.setRight(standDescripcio);
+    }
     });
         standDescripcion.getChildren().addAll(lblCod, reservarButton);
         bp.setRight(standDescripcion);
