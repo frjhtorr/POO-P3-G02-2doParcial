@@ -113,17 +113,26 @@ public class MenuStandsController implements Initializable {
         Button bt = new Button();
         bt.setGraphic(root);
         HBsec.getChildren().add(bt);
+                 bt.setOnAction(e->descripcionStand(stand));
                 }
                 gp.add(HBsec,0, fila);
                 fila++;
             } 
+       
+        
           
         }
     
     private void descripcionStand(Stand stand) {
     // Agrega aquí la lógica que deseas realizar al hacer clic en el botón
-        
-}
+        Stage st = new Stage();
+        BorderPane bp = new BorderPane();
+        VBox standDescripcion = new VBox();
+        Label lblCod = new Label("Código: "+stand.getCod());
+        standDescripcion.getChildren().addAll(lblCod);
+        st.setScene(new Scene(bp));
+        st.show();
+    }
 
     }
  
