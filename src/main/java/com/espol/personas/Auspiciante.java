@@ -4,6 +4,7 @@
  */
 package com.espol.personas;
 
+import com.espol.feria.Stand;
 import com.espol.personas.*;
 import com.espol.redes.CuentaRedSocial;
 import java.util.ArrayList;
@@ -16,6 +17,9 @@ import java.util.Scanner;
 public class Auspiciante extends Persona{
     //VARIABLES DE INSTANCIA
     private SectorCubierto sector;
+    private int cantStands;
+    private String stand1;
+    private String stand2;
     
  /*/ CONSTRUCTORES ---------------------------------------------------
   public Auspiciante(String cedula, String nombre, String telefono,
@@ -33,6 +37,25 @@ public class Auspiciante extends Persona{
     public Auspiciante(String string, String arturo_Carrera, String string0, String artAUSP2outlookes, String perimetral_km_12, String salud_cc, String auspicio_2, CuentaRedSocial ac, SectorCubierto sectorCubierto) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }*/
+    public String getStand1(){
+        return stand1;
+    }
+    public String getStand2(){
+        return stand2;
+    }
+    public void setStand1(String stand){
+        stand1 = stand;
+    }
+    public void setStand2(String stand){
+        stand2 = stand;
+    }
+    
+    public int getCantStand(){
+        return cantStands;
+    }
+    public void setCantStand(int cant){
+        cantStands = cant;
+    }
     
     public SectorCubierto getSectorCubierto(){
         return sector;

@@ -15,6 +15,7 @@ import com.espol.feria.*;
 import com.espol.personas.*;
 import com.espol.redes.*;
 import java.util.ArrayList;
+import java.util.Set;
 import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -51,6 +52,7 @@ public class MenuVerAuspiciantesController implements Initializable{
         aus1.setCedula("9517538642");
         aus1.setNombre("Christopher Lema");
         aus1.setOwner("Auspicio 1");
+        
         aus1.setEmail("correo@gmail.com");
         aus1.setWeb("www.ausp1.com.ec");
         aus1.setTelefono("0952864928");
