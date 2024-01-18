@@ -19,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 /**
@@ -78,36 +79,50 @@ public class MenuStandsController implements Initializable {
     private BorderPane bp;
     
     
-    public void initialize(URL url, ResourceBundle rb) {
-    
+    public void initialize(URL url, ResourceBundle rb) {   
        Feria f= crearFeria();
        //ArrayList<Feria> ferias = new ArrayList<Feria>(); 
        //ferias.add(feria1);
+       // for(Feria f: ferias){
+           VBox VBoxfe = new VBox();
+           Label ferianom = new Label("     Feria");
+           Label nom = new Label("Distribucion de: "+f.getNombre());
+           VBoxfe.getChildren().addAll(ferianom, nom);
            GridPane gp = new GridPane();
-           bp.setCenter(gp);
+           bp.setCenter(VBoxfe);
+           VBoxfe.getChildren().add(gp);
            int fila = 0;
-            Seccion[] lstsec = f.getSecciones();
+           Seccion[] lstsec = f.getSecciones();
            for(Seccion secc: lstsec){
-                Label label = new Label("Seccion" + Arrays.asList(lstsec).indexOf(secc));
                 HBox HBsec = new HBox();
-                HBsec.setSpacing(10);
+                HBsec.setSpacing(20);
                 ArrayList<Stand> lstStands = secc.getArrayStands();
                 for(Stand stand : lstStands){
-                Button btnStand = new Button(stand.getCod());
-                btnStand.setOnAction(e -> descripcionStand(stand));
-                btnStand.setStyle("-fx-background-color: " + (stand.estaReservado() ? "red" : "green"));
-
-                //VBox VBstand = new VBox(new Label(stand.getCod()));
-                VBox VBstand = new VBox(btnStand);
-                HBsec.getChildren().add(VBstand);
+                
+        Label label = new Label(stand.getCod());
+        // Verificar la condición y establecer el estilo correspondiente
+        if (stand.isReservado()) {
+            label.setStyle("-fx-text-fill: green;");
+        } else {
+            label.setStyle("-fx-text-fill: red;");
+        }
+        StackPane root = new StackPane();
+        root.getChildren().add(label);
+                    
+        //HBsec.getChildren().add(bt);
+        Button bt = new Button();
+        bt.setGraphic(root);
+        HBsec.getChildren().add(bt);
                 }
                 gp.add(HBsec,0, fila);
                 fila++;
-            }     
+            } 
+          
         }
+    
     private void descripcionStand(Stand stand) {
-    System.out.println(stand.toString());
     // Agrega aquí la lógica que deseas realizar al hacer clic en el botón
+        
 }
 
     }
