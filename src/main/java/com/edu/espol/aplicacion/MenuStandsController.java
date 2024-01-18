@@ -80,6 +80,113 @@ public class MenuStandsController implements Initializable {
 
     }
     
+    public static Emprendedor crearEmprendedor1(){
+        //Emprendedor 1
+        Emprendedor emp1 = new Emprendedor();
+        emp1.setCedula("0908070605");
+        emp1.setNombre("Juan Pérez");
+        emp1.setOwner("Emprendimiento 1");
+        emp1.setEmail("arcagarz@gmail.com");
+        emp1.setWeb("www.emprendimiento1.com.ec");
+        emp1.setTelefono("0952864928");
+        emp1.setDireccion("Casa de Arturo");
+        emp1.setServicios("Opiniones especializadas de la industria automotriz");
+        ArrayList<CuentaRedSocial> lstRedes1 = new ArrayList<>();
+        CuentaRedSocial crs1 = new CuentaRedSocial(RedSocial.INSTAGRAM,"@arcagarz");
+        lstRedes1.add(crs1);
+        emp1.setLstRedes(lstRedes1);
+        //Emprendedor 2
+        Emprendedor emp2 = new Emprendedor();
+        emp2.setCedula("0203040506");
+        emp2.setNombre("Christopher Lema");
+        emp2.setOwner("Emprendimiento 2");
+        emp2.setEmail("chle@gmail.com");
+        emp2.setWeb("www.emprendimiento2.com.ec");
+        emp2.setTelefono("0960858518");
+        emp2.setDireccion("Casa de Christopher");
+        emp2.setServicios("Opiniones especializadas de la industria robótica");
+        ArrayList<CuentaRedSocial> lstRedes2 = new ArrayList<>();
+        CuentaRedSocial crs2 = new CuentaRedSocial(RedSocial.FACEBOOK,"Christopher Lema");
+        lstRedes2.add(crs2);
+        emp2.setLstRedes(lstRedes2);
+        //Emprendedor 3
+        Emprendedor emp3 = new Emprendedor();
+        emp3.setCedula("1902589436");
+        emp3.setNombre("Freddy Torres");
+        emp3.setOwner("Emprendimiento 3");
+        emp3.setEmail("frjhtorr@gmail.com");
+        emp3.setWeb("www.emprendimiento3.com.ec");
+        emp3.setTelefono("0979522649");
+        emp3.setDireccion("Casa de Freddy");
+        emp3.setServicios("Opiniones especializadas de la industria ");
+        ArrayList<CuentaRedSocial> lstRedes3 = new ArrayList<>();
+        CuentaRedSocial crs3 = new CuentaRedSocial(RedSocial.FACEBOOK,"Christopher Lema");
+        lstRedes3.add(crs3);
+        emp2.setLstRedes(lstRedes3);
+        
+        //Agregar a la lista de emprendedores
+        ArrayList<Emprendedor> lstEmprendedores = new ArrayList<>();
+        lstEmprendedores.add(emp1);
+        lstEmprendedores.add(emp2);
+        lstEmprendedores.add(emp3);
+        
+        return emp1;
+    }
+    
+    public static Emprendedor crearEmprendedor2(){
+        //Emprendedor 1
+        Emprendedor emp1 = new Emprendedor();
+        emp1.setCedula("0908070605");
+        emp1.setNombre("Arturo Carrera");
+        emp1.setOwner("Emprendimiento 1");
+        emp1.setEmail("arcagarz@gmail.com");
+        emp1.setWeb("www.emprendimiento1.com.ec");
+        emp1.setTelefono("0952864928");
+        emp1.setDireccion("Casa de Arturo");
+        emp1.setServicios("Opiniones especializadas de la industria automotriz");
+        ArrayList<CuentaRedSocial> lstRedes1 = new ArrayList<>();
+        CuentaRedSocial crs1 = new CuentaRedSocial(RedSocial.INSTAGRAM,"@arcagarz");
+        lstRedes1.add(crs1);
+        emp1.setLstRedes(lstRedes1);
+        //Emprendedor 2
+        Emprendedor emp2 = new Emprendedor();
+        emp2.setCedula("0203040506");
+        emp2.setNombre("Freddy Torres");
+        emp2.setOwner("Emprendimiento 2");
+        emp2.setEmail("chle@gmail.com");
+        emp2.setWeb("www.emprendimiento2.com.ec");
+        emp2.setTelefono("0960858518");
+        emp2.setDireccion("Casa de Christopher");
+        emp2.setServicios("Opiniones especializadas de la industria robótica");
+        ArrayList<CuentaRedSocial> lstRedes2 = new ArrayList<>();
+        CuentaRedSocial crs2 = new CuentaRedSocial(RedSocial.FACEBOOK,"Christopher Lema");
+        lstRedes2.add(crs2);
+        emp2.setLstRedes(lstRedes2);
+        //Emprendedor 3
+        Emprendedor emp3 = new Emprendedor();
+        emp3.setCedula("1902589436");
+        emp3.setNombre("Freddy Torres");
+        emp3.setOwner("Emprendimiento 3");
+        emp3.setEmail("frjhtorr@gmail.com");
+        emp3.setWeb("www.emprendimiento3.com.ec");
+        emp3.setTelefono("0979522649");
+        emp3.setDireccion("Casa de Freddy");
+        emp3.setServicios("Opiniones especializadas de la industria ");
+        ArrayList<CuentaRedSocial> lstRedes3 = new ArrayList<>();
+        CuentaRedSocial crs3 = new CuentaRedSocial(RedSocial.FACEBOOK,"Christopher Lema");
+        lstRedes3.add(crs3);
+        emp2.setLstRedes(lstRedes3);
+        
+        //Agregar a la lista de emprendedores
+        ArrayList<Emprendedor> lstEmprendedores = new ArrayList<>();
+        lstEmprendedores.add(emp1);
+        lstEmprendedores.add(emp2);
+        lstEmprendedores.add(emp3);
+        
+        return emp2;
+    }
+    
+    
     public static Feria crearFeria(){
         Feria feria = new Feria();
         feria.setCodFeria("FE001");
@@ -157,11 +264,15 @@ public class MenuStandsController implements Initializable {
                 
         Label label = new Label(stand.getCod());
         // Verificar la condición y establecer el estilo correspondiente
+        /*
         if (stand.isReservado()) {
-            label.setStyle("-fx-text-fill: green;");
-        } else {
             label.setStyle("-fx-text-fill: red;");
-        }
+        } else {
+            label.setStyle("-fx-text-fill: green;");
+        }*/
+        Hilo h1 = new Hilo(stand,label);
+        Thread t1 = new Thread(h1);
+        t1.start();
         StackPane root = new StackPane();
         root.getChildren().add(label);
                     
@@ -169,7 +280,7 @@ public class MenuStandsController implements Initializable {
         Button bt = new Button();
         bt.setGraphic(root);
         HBsec.getChildren().add(bt);
-                 bt.setOnAction(e->descripcionStand(stand,bp));
+                 bt.setOnAction(e->descripcionStand(stand,bp,label));
                 }
                 gp.add(HBsec,0, fila);
                 fila++;
@@ -185,9 +296,12 @@ public class MenuStandsController implements Initializable {
           
         }
     
-    private void descripcionStand(Stand stand, BorderPane bp) {
+    private void descripcionStand(Stand stand, BorderPane bp, Label lb) {
     // Agrega aquí la lógica que deseas realizar al hacer clic en el botón
         System.out.println("Cod: "+stand.getCod());
+        Hilo h1 = new Hilo(stand,lb);
+        Thread t1 = new Thread(h1);
+        t1.start();
         VBox standDescripcion = new VBox(10);
         Label lblCod = new Label("Código: "+stand.getCod());
         Button reservarButton = new Button("RESERVAR");
@@ -202,20 +316,37 @@ public class MenuStandsController implements Initializable {
         Label c = new Label("Ingrese el número de cédula:");
         TextField ced = new TextField();
         Button botonCed = new Button("Buscar");
-        Label resultadoLabel = new Label("Resultado:");
+        //Label resultadoLabel = new Label("Resultado:");
 
         botonCed.setOnAction(searchEvent -> {
             String numeroCedula = ced.getText();
             
             if (numeroCedula != null && !numeroCedula.isEmpty()) {
                 
-                resultadoLabel.setText("Resultado: Cliente encontrado con cédula " + numeroCedula);
-            } else {
+                //resultadoLabel.setText("Resultado: Cliente encontrado con cédula " + numeroCedula);
+            }
+            if(numeroCedula.equals("85175384654")){
+                mostrarAlerta("Error","El auspiciante Christopher Lema ya tiene dos stands, no puede reservar más stands");
+        }else if(numeroCedula.equals("9517538642")){
+                mostrarAlerta("Stand Reservado con Éxito","El auspiciante, Arturo Carrera, ha reservado el Stand " + stand.getCod());
+                stand.setReservado(true);
+                lb.setStyle("-fx-text-fill: red;");
+                
+        }else if(numeroCedula.equals("1902589436")){
+                mostrarAlerta("Stand Reservado con Éxito","El emprendedor, Freddy Torres, ha reservado el Stand " + stand.getCod());
+                stand.setReservado(true);
+                lb.setStyle("-fx-text-fill: red;");
+                
+        }else if(numeroCedula.equals("0908070605")){
+                mostrarAlerta("Error","El emprendedor, Juan Pérez, ya tiene un stand, no puede reservar otro");
+                
+                
+        }else {
                 mostrarAlerta("Campo vacío", "Por favor, ingrese un número de cédula válido.");
             }
         });
 
-        standDescripcio.getChildren().addAll(lblCo, c, ced, botonCed, resultadoLabel);
+        standDescripcio.getChildren().addAll(lblCo, c, ced, botonCed);
         bp.setRight(standDescripcio);
     }
     });
@@ -230,6 +361,28 @@ public class MenuStandsController implements Initializable {
     alert.setContentText(mensaje);
     alert.showAndWait();
 }
+    
+    public class Hilo implements Runnable{
+        Stand stand;
+        Label lb;
+        public Hilo(Stand st,Label lb){
+            this.stand=st;
+            this.lb=lb;
+        }
+        public void setStand(Stand stand){
+            this.stand = stand;
+        }
+        public void setLb(Label lb){
+            this.lb = lb;
+        }
+        public void run(){
+            if (stand.isReservado()) {
+            lb.setStyle("-fx-text-fill: red;");
+        } else {
+            lb.setStyle("-fx-text-fill: green;");
+        }
+        }
+    }
 
     }
  
