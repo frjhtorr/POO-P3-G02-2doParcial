@@ -23,6 +23,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 /**
  * FXML Controller class
@@ -39,6 +41,7 @@ public class MenuFeriasController implements Initializable {
     private Button VerAuspi;   
     @FXML
     private Button Verstands;
+
  
     // Comienzo a definir algunas ferias y a tener la lista
     
@@ -93,6 +96,7 @@ public class MenuFeriasController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         ferias.add(feria1);
         VBoxFerias.setSpacing(10);
        for(Feria f: ferias){ 

@@ -118,7 +118,13 @@ public class MenuStandsController implements Initializable {
                 gp.add(HBsec,0, fila);
                 fila++;
             } 
-       
+             /*
+          regresar.setOnAction(e -> {
+              try {
+                  switchToStands();
+              } catch (Exception ex) {
+              }
+          });*/
         
           
         }
