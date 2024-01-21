@@ -10,7 +10,11 @@ import com.espol.feria.Stand;
 import com.espol.personas.Auspiciante;
 import com.espol.personas.AuspicianteEnFeria;
 import com.espol.personas.Emprendedor;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
@@ -23,6 +27,14 @@ public class DatosApp {
     public ArrayList<Auspiciante> auspiciantesGenerales;
     public String rutaFerias = "archivos/ferias.ser";
     public String rutaAuspiciantesGenerales = "archivos/auspiciantes.ser";
+    
+    public ArrayList<Feria> getFerias(){
+        return ferias;
+    }
+    
+    public ArrayList<Auspiciante> getAuspiciantesGenerales(){
+        return auspiciantesGenerales;
+    }
     
     public void crearFeria(){
         Feria feria = new Feria();
@@ -73,15 +85,41 @@ public class DatosApp {
             } 
         }
         
+        public void leerArchivoFerias(){
+            try(ObjectInputStream archivo = new ObjectInputStream(new FileInputStream(rutaFerias))){
+                ferias = (ArrayList<Feria>) archivo.readObject();
+                System.out.println("DS");
+            }catch(FileNotFoundException e){
+                System.out.println(e.getMessage());
+            }catch(IOException e){
+                System.out.println(e.getMessage());
+            }catch(ClassNotFoundException e){
+                System.out.println(e.getMessage());
+            }
+        }
+        
     
        public void actualizarArchivoAuspiciantes(){
            try (ObjectOutputStream archivo = new ObjectOutputStream(new FileOutputStream(rutaAuspiciantesGenerales))) {
                 archivo.writeObject(auspiciantesGenerales);
+                
                 archivo.flush(); //los datos se escribirán inmediatamente en el archivo 
             }
         catch (Exception ex) {
             System.out.println(ex.getMessage());
             } 
        }
+       
+       public void leerArchivoAuspiciantes(){
+            try(ObjectInputStream archivo = new ObjectInputStream(new FileInputStream(rutaAuspiciantesGenerales))){
+                auspiciantesGenerales = (ArrayList<Auspiciante>) archivo.readObject();
+            }catch(FileNotFoundException e){
+                System.out.println(e.getMessage());
+            }catch(IOException e){
+                System.out.println(e.getMessage());
+            }catch(ClassNotFoundException e){
+                System.out.println(e.getMessage());
+            }
+        }
      
 }

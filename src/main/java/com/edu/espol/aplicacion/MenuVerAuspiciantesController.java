@@ -44,6 +44,8 @@ public class MenuVerAuspiciantesController implements Initializable{
     
     CuentaRedSocial ac = new CuentaRedSocial(RedSocial.FACEBOOK,"Arturro Carrera");
     //Auspiciante au2 = new Auspiciante("9278199370","Arturo Carrera","0960858517","ArtAUSP2@outlook.es","Perimetral km 1/2", "SALUD CC","Auspicio 2",ac,SectorCubierto.SALUD);
+    @FXML
+    private Button backButton;
     
 
      public Auspiciante crearAuspiciante(){
@@ -123,6 +125,17 @@ public class MenuVerAuspiciantesController implements Initializable{
           
     } 
         // QUE TAL MUCHAHCOS, FELIZ ANIO
+        backButton.setOnAction(e -> {
+              try {
+                  switchToFerias();
+              } catch (Exception ex) {
+              }
+          });
 }
+    
+    @FXML
+    private void switchToFerias() throws Exception{
+        App.setRoot("MenuFerias");   
+    }
     
 }

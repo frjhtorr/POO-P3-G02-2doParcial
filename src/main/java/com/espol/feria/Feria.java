@@ -6,13 +6,14 @@ package com.espol.feria;
 
 import java.util.*;
 import com.espol.personas.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Month;
 /**
  *
  * @author joshf
  */
-public class Feria {
+public class Feria implements Serializable{
   //VARIABLES DE INSTANCIA
     private String nombre;
     private String descripcion;

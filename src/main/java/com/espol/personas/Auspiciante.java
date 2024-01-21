@@ -7,6 +7,7 @@ package com.espol.personas;
 import com.espol.feria.Stand;
 import com.espol.personas.*;
 import com.espol.redes.CuentaRedSocial;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -14,7 +15,7 @@ import java.util.Scanner;
  *
  * @author joshf
  */
-public class Auspiciante extends Persona{
+public class Auspiciante extends Persona implements Serializable{
     //VARIABLES DE INSTANCIA
     private SectorCubierto sector;
     private int cantStands;

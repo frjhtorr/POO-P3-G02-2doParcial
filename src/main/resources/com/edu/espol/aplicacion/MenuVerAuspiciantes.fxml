@@ -21,6 +21,7 @@
       <HBox alignment="CENTER" prefHeight="67.0" prefWidth="600.0" spacing="40.0" BorderPane.alignment="CENTER_LEFT">
          <children>
             <Button fx:id="buttonNuevoAuspiciante" mnemonicParsing="false" text="Nuevo Auspiciante" />
+            <Button fx:id="backButton" mnemonicParsing="false" text="Regresar a Feria" />
          </children>
       </HBox>
    </bottom>

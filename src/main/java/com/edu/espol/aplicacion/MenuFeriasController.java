@@ -45,17 +45,64 @@ public class MenuFeriasController implements Initializable {
     private Button Verstands;
 
     //Atributos del MenuFeriasControler
+    private DatosApp datosApp;
+    @FXML
+    private ImageView im;
     
-    // Comienzo a definir algunas ferias y a tener la lista
-       
     /**
      * Initializes the controller class.
      */
+    //ArrayList<Feria> ferias = new ArrayList<>();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        /*
+        datosApp = new DatosApp();
+        datosApp.leerArchivoFerias();
+        datosApp.crearFeria();
+        ArrayList<Feria> ferias = datosApp.getFerias();
+        // ArrayList<Auspiciante> auspiciantesGenerales = datosApp.getAuspiciantesGenerales();
+        */
+        ArrayList<Feria> ferias = new ArrayList<Feria>();
         
+        Feria feria = new Feria();
+        feria.setCodFeria("FE001");
+        feria.setNombre("Feria del Mueble 2024");
+        feria.setDescripcion("Venta de muebles de emprendimientos de guayaquileños");
+        feria.setLugar("Centro de convenciones");
+        feria.setFechaIni("2024-06-15");
+        feria.setFechaFin("2024-06-17");
+        feria.setHorario("10h00-14h00");
+        feria.setLugar("Centro de convenciones");
+        ArrayList<AuspicianteEnFeria> lstAuspiciantes= new ArrayList<>();
+        ArrayList<Emprendedor> lstEmprendedores= new ArrayList<>();
+        feria.setLstAuspiciantes(lstAuspiciantes);
+        feria.setLstEmprendedores(lstEmprendedores);
+        
+        Seccion[] seccionesFeria = new Seccion[4];
+        String[] letras = {"A","B","C","D"};
+        int j = 0;
+        for(String letra : letras){
+            Seccion seccion = new Seccion();
+            ArrayList<Stand> stands = new ArrayList<Stand>();
+            int cant = 4;
+            seccion.setCantStands(cant);
+            seccion.setId(letra);
+            for (int i = 1; i <= (cant+1); i++) {
+                Stand st = new Stand();
+                st.setCod(letra+i);
+                stands.add(st);
+            }
+            seccion.setArrayStands(stands);
+            seccionesFeria[j]=seccion;
+            j+=1;
+        }
+        feria.setSecciones(seccionesFeria);
+        
+        ferias.add(feria);
+        
+        im = new ImageView(new Image("imagenes/logo espol 2-01.png"));
         VBoxFerias.setSpacing(10);
-       for(Feria f: ferias){ 
+        for(Feria f: ferias){ 
           Button b = new Button("Ver info");
           HBox hb1 = new HBox(new Text(f.getNombre()) , new Text(f.getCodFeria()), b);
           hb1.setSpacing(20);
@@ -64,6 +111,11 @@ public class MenuFeriasController implements Initializable {
           // A partir de aqui hay el submenu que me lleva a ver la info de la feria
           // Y las creaciones de botones que conecten con los demás menus
           b.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->{
+          try {
+                  switchToVerInfoFeria();
+              } catch (Exception ex) {
+              }
+          /*
           Stage stfe = new Stage();
           BorderPane bp = new BorderPane();
           VBox feriavb = new VBox();
@@ -81,27 +133,35 @@ public class MenuFeriasController implements Initializable {
           stfe.show();
           
           
+          
           btstand.setOnAction(e -> {
               try {
                   switchToStands();
               } catch (Exception ex) {
               }
           });
-
+          */
            });
         
         }
     }
-        
+    
+    @FXML
+    private void switchToVerInfoFeria() throws Exception{
+        App.setRoot("VerInfoFeria");  
+    }
 
+    
     @FXML
     private void switchToAuspiciantes() throws Exception{
         App.setRoot("MenuVerAuspiciantes");   
     }
+    
     @FXML
     private void switchToStands() throws Exception{
         App.setRoot("MenuStands");   
     }
+    
     
 }
 

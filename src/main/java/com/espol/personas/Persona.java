@@ -6,6 +6,7 @@ package com.espol.personas;
 
 import com.espol.feria.*;
 import com.espol.redes.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -13,7 +14,7 @@ import java.util.Scanner;
  *
  * @author joshf
  */
-public class Persona {
+public class Persona implements Serializable{
    //VARIABLES DE INSTANCIA
     protected String cedula;
     protected String nombre;

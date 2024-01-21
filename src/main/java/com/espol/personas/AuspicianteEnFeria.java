@@ -4,11 +4,13 @@
  */
 package com.espol.personas;
 
+import java.io.Serializable;
+
 /**
  *
  * @author joshf
  */
-public class AuspicianteEnFeria extends Auspiciante{
+public class AuspicianteEnFeria extends Auspiciante implements Serializable{
     private String auspicio;
     private boolean tieneStand;
 

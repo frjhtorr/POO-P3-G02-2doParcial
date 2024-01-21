@@ -20,6 +20,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -31,6 +32,9 @@ import javafx.stage.Stage;
  * @author Josh
  */
 public class MenuStandsController implements Initializable {
+
+    @FXML
+    private Button backButton;
 
 
 
@@ -301,7 +305,13 @@ public class MenuStandsController implements Initializable {
               }
           });*/
         
-          
+          backButton.setOnAction(e -> {
+              try {
+                  switchToFerias();
+              } catch (Exception ex) {
+              }
+          });
+             
         }
     
     private void descripcionStand(Stand stand, BorderPane bp, Label lb) {
@@ -393,6 +403,11 @@ public class MenuStandsController implements Initializable {
             lb.setStyle("-fx-text-fill: green;");
         }
         }
+    }
+    
+    @FXML
+    private void switchToFerias() throws Exception{
+        App.setRoot("MenuFerias");   
     }
 
     }

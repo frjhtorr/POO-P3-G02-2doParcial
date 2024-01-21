@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.edu.espol.aplicacion.VerInfoFeriaController">
+   <top>
+      <HBox alignment="CENTER" prefHeight="48.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="INFORMACIÓN DE FERIA" />
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <VBox fx:id="vb" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="lblNC" />
+         </children>
+      </VBox>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="82.0" prefWidth="600.0" spacing="20.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="verEmpButton" mnemonicParsing="false" text="Ver Emprendedores" />
+            <Button fx:id="verAuspiciantesButton" mnemonicParsing="false" text="Ver Auspiciantes" />
+            <Button fx:id="editarFeriaButton" mnemonicParsing="false" text="Editar Feria" />
+            <Button fx:id="verStandsButton" mnemonicParsing="false" text="Ver Stands" />
+            <Button fx:id="backButton" mnemonicParsing="false" text="Regresar a Ferias" />
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>
