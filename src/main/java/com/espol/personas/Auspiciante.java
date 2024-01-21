@@ -64,6 +64,9 @@ public class Auspiciante extends Persona implements Serializable{
     public void setSectorCubierto(String sector){
         this.sector = SectorCubierto.valueOf(sector);
     }
+    public void setSectorCubierto(SectorCubierto sector){
+        this.sector = sector;
+    }
     public static void opcionesIniciales(){
         Persona.opcionesIniciales();
         System.out.println("8. Sectores cubiertos");

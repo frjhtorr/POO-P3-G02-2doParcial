@@ -14,6 +14,9 @@ import java.io.IOException;
 import com.espol.feria.*;
 import com.espol.personas.*;
 import com.espol.redes.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Set;
 import javafx.event.EventType;
@@ -71,6 +74,20 @@ public class MenuVerAuspiciantesController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         auspigen.add(au1);
+        try(ObjectInputStream archivo = new ObjectInputStream(new FileInputStream("auspiciantes.ser"))){
+                //ferias = (ArrayList<Feria>) archivo.readObject();
+                while(true){
+                    auspigen.add((Auspiciante) archivo.readObject());
+                    System.out.println("Aupiciante leído");
+                }
+                
+            }catch(FileNotFoundException e){
+                System.out.println(e.getMessage());
+            }catch(IOException e){
+                System.out.println(e.getMessage());
+            }catch(ClassNotFoundException e){
+                System.out.println(e.getMessage());
+            }
         //auspigen.add(au2);
         vbAuspiciantes.setSpacing(30);
         vbAuspiciantes.getChildren().add(new HBox(new Text("Numero de cedula de cada auspiciante")));
@@ -131,11 +148,20 @@ public class MenuVerAuspiciantesController implements Initializable{
               } catch (Exception ex) {
               }
           });
+        buttonNuevoAuspiciante.setOnAction(e -> {
+              try {
+                  switchToNuevoAuspiciante();
+              } catch (Exception ex) {
+              }
+          });
 }
     
-    @FXML
     private void switchToFerias() throws Exception{
         App.setRoot("MenuFerias");   
+    }
+    
+    private void switchToNuevoAuspiciante() throws Exception{
+        App.setRoot("RegistrarNuevoAuspiciante");   
     }
     
 }

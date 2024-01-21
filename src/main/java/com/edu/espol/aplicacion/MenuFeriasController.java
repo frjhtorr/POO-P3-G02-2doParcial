@@ -111,7 +111,8 @@ public class MenuFeriasController implements Initializable {
           // A partir de aqui hay el submenu que me lleva a ver la info de la feria
           // Y las creaciones de botones que conecten con los demás menus
           b.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->{
-          try {
+          
+              try {
                   switchToVerInfoFeria();
               } catch (Exception ex) {
               }
@@ -146,7 +147,6 @@ public class MenuFeriasController implements Initializable {
         }
     }
     
-    @FXML
     private void switchToVerInfoFeria() throws Exception{
         App.setRoot("VerInfoFeria");  
     }
