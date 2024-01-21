@@ -85,6 +85,7 @@ public class DatosApp {
             } 
         }
         
+        
         public void leerArchivoFerias(){
             try(ObjectInputStream archivo = new ObjectInputStream(new FileInputStream(rutaFerias))){
                 ferias = (ArrayList<Feria>) archivo.readObject();

@@ -66,7 +66,6 @@ public class RegistrarNuevoAuspicianteController implements Initializable {
               } catch (Exception ex) {
               }
           });
-        guardarAuspiciante(aus);
         
         backButton.setOnAction(e -> {
               try {

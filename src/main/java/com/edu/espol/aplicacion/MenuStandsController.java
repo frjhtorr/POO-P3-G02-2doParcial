@@ -14,10 +14,15 @@ import com.espol.personas.*;
 import com.espol.redes.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -35,7 +40,10 @@ public class MenuStandsController implements Initializable {
 
     @FXML
     private Button backButton;
-
+    @FXML
+    private Button regresarButton;
+    
+    private Feria fs;
 
 
     /**
@@ -236,7 +244,8 @@ public class MenuStandsController implements Initializable {
     
     
     public void initialize(URL url, ResourceBundle rb) {   
-       Feria f= crearFeria();
+        fs = MenuFeriasController.fs;
+       //Feria f= crearFeria();
        Auspiciante aus1 = crearAuspiciante1();
        Auspiciante aus2 = crearAuspiciante2();
        //ArrayList<Feria> ferias = new ArrayList<Feria>(); 
@@ -245,7 +254,7 @@ public class MenuStandsController implements Initializable {
            VBox VBoxfe = new VBox();
            VBoxfe.setAlignment(Pos.CENTER);
            Label ferianom = new Label("     Feria");
-           Label nom = new Label("Distribucion de: "+f.getNombre());
+           Label nom = new Label("Distribucion de: "+fs.getNombre());
            VBoxfe.getChildren().addAll(ferianom, nom);
            GridPane gp = new GridPane();
            gp.setAlignment(Pos.CENTER);
@@ -256,7 +265,7 @@ public class MenuStandsController implements Initializable {
            bp.setCenter(VBoxfe);
            VBoxfe.getChildren().add(gp);
            int fila = 0;
-           Seccion[] lstsec = f.getSecciones();
+           Seccion[] lstsec = fs.getSecciones();
            for(Seccion secc: lstsec){
                 HBox HBsec = new HBox();
                 HBsec.setAlignment(Pos.CENTER);
@@ -264,7 +273,7 @@ public class MenuStandsController implements Initializable {
                 ArrayList<Stand> lstStands = secc.getArrayStands();
                 for(Stand stand : lstStands){
                 String cod = stand.getCod();
-                if(cod.equals("A1")){
+               /* if(cod.equals("A1")){
                     stand.setReservado(true);
                 }else if(cod.equals("B3")){
                     stand.setReservado(true);
@@ -272,16 +281,16 @@ public class MenuStandsController implements Initializable {
                     stand.setReservado(true);
                 }else{
                     stand.setReservado(false);
-                }
+                }*/
                 
         Label label = new Label(stand.getCod());
         // Verificar la condición y establecer el estilo correspondiente
-        /*
+        
         if (stand.isReservado()) {
             label.setStyle("-fx-text-fill: red;");
         } else {
             label.setStyle("-fx-text-fill: green;");
-        }*/
+        }
         Hilo h1 = new Hilo(stand,label);
         Thread t1 = new Thread(h1);
         t1.start();
@@ -311,11 +320,17 @@ public class MenuStandsController implements Initializable {
               } catch (Exception ex) {
               }
           });
+          
+          regresarButton.setOnAction(e -> {
+              try {
+                  switchToVerInfoFeria();
+              } catch (Exception ex) {
+              }
+          });
              
         }
     
     private void descripcionStand(Stand stand, BorderPane bp, Label lb) {
-    // Agrega aquí la lógica que deseas realizar al hacer clic en el botón
         System.out.println("Cod: "+stand.getCod());
         Hilo h1 = new Hilo(stand,lb);
         Thread t1 = new Thread(h1);
@@ -325,10 +340,7 @@ public class MenuStandsController implements Initializable {
         Label lblCod = new Label("Código: "+stand.getCod());
         Button reservarButton = new Button("RESERVAR");
         reservarButton.setOnAction(event -> {
-        if (stand.isReservado()) {
-            mostrarAlerta("Reserva no disponible", "El stand ya está ocupado");
-            
-        }else{
+        
         VBox standDescripcio = new VBox(); // Crear VBox para la descripción del stand
         standDescripcio.setAlignment(Pos.CENTER);
         Label lblCo = new Label("VERIFICACION");
@@ -340,6 +352,26 @@ public class MenuStandsController implements Initializable {
         //Label resultadoLabel = new Label("Resultado:");
 
         botonCed.setOnAction(searchEvent -> {
+            ArrayList<AuspicianteEnFeria> auspiciantes = fs.getLstAuspiciantes();
+            ArrayList<Emprendedor> emprendedores = fs.getLstEmprendedores();
+            ArrayList<String> nombres = new ArrayList<>();
+            for(AuspicianteEnFeria af : auspiciantes){
+                nombres.add(af.getNombre());
+            }
+            for(Emprendedor e : emprendedores){
+                nombres.add(e.getNombre());
+            }
+            
+            ObservableList<String> options = FXCollections.observableArrayList(nombres);
+
+            ComboBox<String> comboBox = new ComboBox<>(options);
+
+        // Manejar el evento de selección
+            comboBox.setOnAction(e -> {
+                String selectedName = comboBox.getValue();
+                System.out.println("Nombre seleccionado: " + selectedName);
+            });
+ 
             String numeroCedula = ced.getText();
             
             if (numeroCedula != null && !numeroCedula.isEmpty()) {
@@ -369,7 +401,7 @@ public class MenuStandsController implements Initializable {
 
         standDescripcio.getChildren().addAll(lblCo,lblCodigo, c, ced, botonCed);
         bp.setRight(standDescripcio);
-    }
+    
     });
         standDescripcion.getChildren().addAll(lblCod, reservarButton);
         bp.setRight(standDescripcion);
@@ -405,9 +437,16 @@ public class MenuStandsController implements Initializable {
         }
     }
     
-    @FXML
     private void switchToFerias() throws Exception{
         App.setRoot("MenuFerias");   
+    }
+    
+    private void switchToVerInfoFeria() throws Exception{
+        App.setRoot("VerInfoFeria");   
+    }
+    
+    private void switchToEditarFeria() throws Exception{
+        App.setRoot("VerInfoFeria");   
     }
 
     }

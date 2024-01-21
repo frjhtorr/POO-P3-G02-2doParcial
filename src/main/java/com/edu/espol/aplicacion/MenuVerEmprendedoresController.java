@@ -4,7 +4,9 @@
  */
 package com.edu.espol.aplicacion;
 
+import com.espol.personas.Emprendedor;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,13 +24,42 @@ public class MenuVerEmprendedoresController implements Initializable {
     private Button buttonNuevoEmprendedor;
     @FXML
     private VBox vbEmprendedores;
+    @FXML
+    private Button backButton;
+    
+    private ArrayList<Emprendedor> emps;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        emps=MenuFeriasController.fs.getLstEmprendedores();
         // TODO
-    }    
+         
+    }  
+    
+    private void switchToVerInfoFerias() throws Exception{
+        App.setRoot("VerInfoFeria");   
+    }
+    
+    private void switchToNuevoEmprendedor() throws Exception{
+        App.setRoot("RegistrarNuevoEmprendedor");   
+    }
+    
+    private void accionesBotones(){
+        backButton.setOnAction(e -> {
+                  try {
+                      switchToVerInfoFerias();
+                  } catch (Exception ex) {
+                  }
+              }); 
+        buttonNuevoEmprendedor.setOnAction(e -> {
+                  try {
+                      switchToNuevoEmprendedor();
+                  } catch (Exception ex) {
+                  }
+              });
+    }
     
 }

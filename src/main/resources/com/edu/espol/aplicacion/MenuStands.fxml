@@ -20,7 +20,8 @@
    <bottom>
       <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="20.0" BorderPane.alignment="TOP_LEFT">
          <children>
-            <Button fx:id="backButton" mnemonicParsing="false" text="Regresar a Feria" />
+            <Button fx:id="regresarButton" mnemonicParsing="false" text="Atrás" />
+            <Button fx:id="backButton" mnemonicParsing="false" text="Regresar a Ferias" />
          </children>
       </HBox>
    </bottom>

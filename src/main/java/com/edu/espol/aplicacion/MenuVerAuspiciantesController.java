@@ -79,6 +79,7 @@ public class MenuVerAuspiciantesController implements Initializable{
                 while(true){
                     auspigen.add((Auspiciante) archivo.readObject());
                     System.out.println("Aupiciante leído");
+                    System.out.println(((Auspiciante) archivo.readObject()).getCedula());
                 }
                 
             }catch(FileNotFoundException e){

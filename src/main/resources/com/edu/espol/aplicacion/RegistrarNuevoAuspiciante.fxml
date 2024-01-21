@@ -13,7 +13,8 @@
       <HBox alignment="CENTER" prefHeight="85.0" prefWidth="600.0" spacing="40.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="saveButton" mnemonicParsing="false" text="Guardar" />
-            <Button fx:id="backButton" mnemonicParsing="false" text="Regresar" />
+            <Button fx:id="regresarButton" mnemonicParsing="false" text="Regresar" />
+            <Button fx:id="backButton" mnemonicParsing="false" text="Menu Principal" />
          </children>
       </HBox>
    </bottom>
