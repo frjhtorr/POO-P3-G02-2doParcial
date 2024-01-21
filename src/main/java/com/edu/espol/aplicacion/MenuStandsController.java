@@ -14,6 +14,7 @@ import com.espol.personas.*;
 import com.espol.redes.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -238,16 +239,23 @@ public class MenuStandsController implements Initializable {
        //ferias.add(feria1);
        // for(Feria f: ferias){
            VBox VBoxfe = new VBox();
+           VBoxfe.setAlignment(Pos.CENTER);
            Label ferianom = new Label("     Feria");
            Label nom = new Label("Distribucion de: "+f.getNombre());
            VBoxfe.getChildren().addAll(ferianom, nom);
            GridPane gp = new GridPane();
+           gp.setAlignment(Pos.CENTER);
+           gp.setHgap(10);
+           gp.setVgap(10);
+           gp.setMaxWidth(300); // Tamaño fijo en ancho
+           gp.setMaxHeight(200); // Tamaño fijo en alto
            bp.setCenter(VBoxfe);
            VBoxfe.getChildren().add(gp);
            int fila = 0;
            Seccion[] lstsec = f.getSecciones();
            for(Seccion secc: lstsec){
                 HBox HBsec = new HBox();
+                HBsec.setAlignment(Pos.CENTER);
                 HBsec.setSpacing(20);
                 ArrayList<Stand> lstStands = secc.getArrayStands();
                 for(Stand stand : lstStands){
@@ -303,6 +311,7 @@ public class MenuStandsController implements Initializable {
         Thread t1 = new Thread(h1);
         t1.start();
         VBox standDescripcion = new VBox(10);
+        standDescripcion.setAlignment(Pos.CENTER);
         Label lblCod = new Label("Código: "+stand.getCod());
         Button reservarButton = new Button("RESERVAR");
         reservarButton.setOnAction(event -> {
@@ -311,8 +320,10 @@ public class MenuStandsController implements Initializable {
             
         }else{
         VBox standDescripcio = new VBox(); // Crear VBox para la descripción del stand
+        standDescripcio.setAlignment(Pos.CENTER);
         Label lblCo = new Label("VERIFICACION");
-
+        Label lblCodigo = new Label("Stand: "+stand.getCod());
+        
         Label c = new Label("Ingrese el número de cédula:");
         TextField ced = new TextField();
         Button botonCed = new Button("Buscar");
@@ -346,7 +357,7 @@ public class MenuStandsController implements Initializable {
             }
         });
 
-        standDescripcio.getChildren().addAll(lblCo, c, ced, botonCed);
+        standDescripcio.getChildren().addAll(lblCo,lblCodigo, c, ced, botonCed);
         bp.setRight(standDescripcio);
     }
     });
