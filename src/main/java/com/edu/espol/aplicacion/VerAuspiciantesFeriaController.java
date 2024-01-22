@@ -39,12 +39,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import javafx.geometry.Insets;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 
 /**
@@ -54,19 +49,13 @@ import javafx.scene.layout.GridPane;
  */
 public class VerAuspiciantesFeriaController implements Initializable {
     private ArrayList<Auspiciante> ausps;
-    
-    
-    /**
-     * Initializes the controller class.
-     */
+  
     @Override
     public void initialize(URL url, ResourceBundle rb) {}
 
-        // Se necesita una feria para este metodo
-/*
-public void infoAusp(feria) {
+// Se necesita una feria para este metodo
 
-	lstAusp = feria.getLstAuspiciantes();
+public void infoAusp(ArrayList<Auspiciante> lstAusp, VBox vbAuspiciantes){
 
 // Supongo que hay un VBox que me ponga los auspiciantes por columna en el controller que estoy trabajando
 
@@ -75,14 +64,14 @@ public void infoAusp(feria) {
         for(Auspiciante ausp: lstAusp){ 
           Button b = new Button("Ver info");        
    
-          HBox hb1 = new HBox(new Text(emp.getCedula()), new Text(ausp.getOwner()),  b);
+          HBox hb1 = new HBox(new Text(ausp.getCedula()), new Text(ausp.getOwner()),  b);
           hb1.setSpacing(10);
           vbAuspiciantes.getChildren().add(hb1);
           b.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->{
             
         VBox redesVBox = new VBox();
         redesVBox.getChildren().add(new Label("Redes Sociales:"));
-        for (CuentaRedSocial red : emp.getLstRedes()) {
+        for (CuentaRedSocial red : ausp.getLstRedes()) {
             redesVBox.getChildren().add(new Label(red.toString()));
         }
        
@@ -113,6 +102,6 @@ public void infoAusp(feria) {
       
     }
     }    
-  */  
+    
 
 }
