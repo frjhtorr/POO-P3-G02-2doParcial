@@ -6,12 +6,6 @@ package com.edu.espol.aplicacion;
 
 import com.espol.personas.Auspiciante;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.layout.VBox;
-import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -29,14 +23,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.scene.control.DatePicker;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import javafx.geometry.Insets;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -49,9 +35,18 @@ import javafx.scene.layout.GridPane;
  */
 public class VerAuspiciantesFeriaController implements Initializable {
     private ArrayList<Auspiciante> ausps;
+    @FXML
+    private VBox vbAuspiciantes;
+    @FXML
+    private Label lblFeria;
   
     @Override
-    public void initialize(URL url, ResourceBundle rb) {}
+    public void initialize(URL url, ResourceBundle rb) {
+        
+       // infoAusp(ausps, vbAuspiciantes);
+    
+    
+    }
 
 // Se necesita una feria para este metodo
 
@@ -92,11 +87,6 @@ public void infoAusp(ArrayList<Auspiciante> lstAusp, VBox vbAuspiciantes){
         gp.setPadding(new Insets(20,20,20,20));
         gp.add(infoVBox,2,0);
         gp.add(redesVBox, 0,0);
-        //gp.add(standsVBox, 1, 0);
-        Stage empStage = new Stage();
-        Scene scene = new Scene(gp);
-        empStage.setScene(scene);
-        empStage.show();
 
           });
       

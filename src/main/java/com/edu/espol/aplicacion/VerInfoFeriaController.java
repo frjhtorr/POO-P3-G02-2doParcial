@@ -67,7 +67,7 @@ public class VerInfoFeriaController implements Initializable {
     }
     
     private void switchToVerAuspiciantesFeria() throws Exception{
-        App.setRoot("EditarFeria");   
+        App.setRoot("VerAuspiciantesFeria");   
     }
     
     private void accionesBotones(){
