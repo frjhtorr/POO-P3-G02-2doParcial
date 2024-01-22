@@ -84,7 +84,7 @@ public class MenuFeriasController implements Initializable {
         Feria feria = crearFeria(ferias);
         crearEmprendedores(feria);
         ferias.add(feria);
-        crearAuspiciantes();
+        //crearAuspiciantes();
         //*/
         im = new ImageView(new Image("imagenes/logo espol 2-01.png"));
         VBoxFerias.setSpacing(10);
@@ -241,7 +241,7 @@ public class MenuFeriasController implements Initializable {
             }
         }
        
-       public static void crearEmprendedores(Feria f){
+       public void crearEmprendedores(Feria f){
         //Emprendedor 1
         Emprendedor emp1 = new Emprendedor();
         emp1.setCedula("0908070605");
@@ -294,7 +294,7 @@ public class MenuFeriasController implements Initializable {
         f.setLstEmprendedores(lstEmprendedores);
     }
     
-    public static void crearAuspiciantes(){
+    public void crearAuspiciantes(){
         //Auspiciante 1
         Auspiciante aus1 = new Auspiciante();
         aus1.setCedula("9517538642");

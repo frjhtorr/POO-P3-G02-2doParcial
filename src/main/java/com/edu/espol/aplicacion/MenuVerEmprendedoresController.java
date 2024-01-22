@@ -59,6 +59,7 @@ public class MenuVerEmprendedoresController implements Initializable {
           // A partir de aqui hay el submenu que me lleva a ver la info de la feria
           // Y las creaciones de botones que conecten con los demás menus
           b.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->{
+              emp = new Emprendedor();
               emp= f;
              try {
                   switchToEditarEmprendedor();

@@ -38,7 +38,7 @@ public class EditarEmprendedorController implements Initializable {
     private Button backButton;
     
     private Feria fs ;
-    private Emprendedor emp;
+    private Emprendedor emprendedor;
 
     /**
      * Initializes the controller class.
@@ -47,7 +47,7 @@ public class EditarEmprendedorController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         fs = MenuFeriasController.fs;
-        emp=MenuVerEmprendedoresController.emp;
+        emprendedor=MenuVerEmprendedoresController.emp;
         editarEmprendedor(fs);
         accionesBotones();
         // TODO
@@ -58,7 +58,7 @@ public class EditarEmprendedorController implements Initializable {
     }
     
     public void editarEmprendedor(Feria feria) {
-        Emprendedor emp= new Emprendedor();
+        
 	
         VBox root = new VBox();
         root.setSpacing(10);
@@ -110,7 +110,7 @@ public class EditarEmprendedorController implements Initializable {
             for(Feria f : MenuFeriasController.ferias){
                 if(cod.equals(f.getCodFeria())){
                     for(Emprendedor e : f.getLstEmprendedores()){
-                        if(e.getCedula().equals(emp.getCedula())){
+                        if(e.getCedula().equals(emprendedor.getCedula())){
                             e.setNombre(nombre.getText());
                             e.setTelefono(tlf.getText());
                             e.setEmail(email.getText());
