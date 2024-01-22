@@ -5,26 +5,12 @@
 package com.edu.espol.aplicacion;
 
 import com.espol.feria.Feria;
-import com.espol.personas.Auspiciante;
 import com.espol.personas.Emprendedor;
-import com.espol.personas.SectorCubierto;
-import static com.espol.personas.SectorCubierto.ALIMENTACION;
-import static com.espol.personas.SectorCubierto.EDUCACION;
-import static com.espol.personas.SectorCubierto.SALUD;
-import static com.espol.personas.SectorCubierto.VESTIMENTA;
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
@@ -36,30 +22,43 @@ import javafx.scene.layout.VBox;
  *
  * @author Josh
  */
-public class RegistrarNuevoAuspicianteController implements Initializable {
+public class EditarEmprendedorController implements Initializable {
 
     @FXML
     private Button saveButton;
     @FXML
-    private Button backButton;
-    @FXML
     private Button cancelButton;
     @FXML
-    private ScrollPane sp;
+    private VBox vbDatos;
     
-    private ArrayList<Auspiciante> auspiciantesGenerales;
+   
+    @FXML
+    private ScrollPane sp;
+    @FXML
+    private Button backButton;
+    
+    private Feria fs ;
+    private Emprendedor emp;
 
     /**
      * Initializes the controller class.
      */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        auspiciantesGenerales = MenuFeriasController.auspiciantesGenerales;
-        guardarAuspiciante(auspiciantesGenerales);
-    }    
+        fs = MenuFeriasController.fs;
+        emp=MenuVerEmprendedoresController.emp;
+        editarEmprendedor(fs);
+        accionesBotones();
+        // TODO
+    }
     
-    private void guardarAuspiciante(ArrayList<Auspiciante> auspiciantes){
-        Auspiciante emp= new Auspiciante();
+    public void mostrarDatosEmprendedor(Emprendedor e){
+        System.out.println("EditarDatos");
+    }
+    
+    public void editarEmprendedor(Feria feria) {
+        Emprendedor emp= new Emprendedor();
 	
         VBox root = new VBox();
         root.setSpacing(10);
@@ -84,10 +83,8 @@ public class RegistrarNuevoAuspicianteController implements Initializable {
 	TextField owner = new TextField();
         owner.setPromptText("Dueño del emprendimiento");
 
-	TextField ced= new TextField();
-        ced.setPromptText("Cédula de identidad");
-
-        
+        TextArea servicios= new TextArea();
+        servicios.setPromptText("Servicios ofrecidos por emprendedor");
 
         // Agrega los controles al VBox
         root.getChildren().addAll(
@@ -98,8 +95,9 @@ public class RegistrarNuevoAuspicianteController implements Initializable {
 		new Label("Dirección "), direc,
                 new Label("Sitio Web"), web,
                 new Label("Dueño de emprendimiento "), owner,
-                new Label("Cédula"), ced
-                                
+                
+                new Label("Servicios"), servicios
+                
         );
 
 
@@ -108,22 +106,41 @@ public class RegistrarNuevoAuspicianteController implements Initializable {
         // Botón de guardar
         saveButton.setOnAction(event -> {
             // Obtener la información del formulario
-            emp.setCedula(ced.getText());
-	    emp.setNombre(nombre.getText());
-	    emp.setTelefono(tlf.getText());
-	    emp.setEmail(email.getText());
-	    emp.setDireccion(direc.getText());
-	    emp.setWeb(web.getText());
-	    emp.setOwner(owner.getText());
-	           	    
-           auspiciantes.add(emp);
+	    String cod = fs.getCodFeria();
+            for(Feria f : MenuFeriasController.ferias){
+                if(cod.equals(f.getCodFeria())){
+                    for(Emprendedor e : f.getLstEmprendedores()){
+                        if(e.getCedula().equals(emp.getCedula())){
+                            e.setNombre(nombre.getText());
+                            e.setTelefono(tlf.getText());
+                            e.setEmail(email.getText());
+                            e.setDireccion(direc.getText());
+                            e.setWeb(web.getText());
+                            e.setOwner(owner.getText());
+                            e.setServicios(servicios.getText());
+                        }
+                            
+                    }
+                }
+            }
 	    
         });
 
+        
+        
+    }
+    
+    private void switchToFerias() throws Exception {
+        App.setRoot("MenuFerias");
+    }
+    private void switchToVerEmprendedores() throws Exception {
+        App.setRoot("MenuFerias");
+    }
+    private void accionesBotones(){
         // Botón de cancelar
         cancelButton.setOnAction(event -> {
             try {
-                switchToAuspiciantes();
+                switchToVerEmprendedores();
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -136,20 +153,6 @@ public class RegistrarNuevoAuspicianteController implements Initializable {
             }
         }); 
     }
-    private void mostrarAlerta(String titulo, String mensaje, AlertType tipo) {
-        Alert alert = new Alert(tipo);
-        alert.setTitle(titulo);
-        alert.setHeaderText(null); // Para no mostrar el encabezado
-        alert.setContentText(mensaje);
-        alert.showAndWait();
-    }
     
-    private void switchToFerias() throws Exception{
-        App.setRoot("MenuFerias");   
-    }
-    
-    private void switchToAuspiciantes() throws Exception{
-        App.setRoot("MenuVerAuspiciantes");   
-    }
     
 }
