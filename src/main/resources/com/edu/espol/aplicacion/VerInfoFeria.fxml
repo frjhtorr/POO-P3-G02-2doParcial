@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.edu.espol.aplicacion.VerInfoFeriaController">
    <top>
@@ -14,13 +13,6 @@
          </children>
       </HBox>
    </top>
-   <center>
-      <VBox fx:id="vb" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label fx:id="lblNC" />
-         </children>
-      </VBox>
-   </center>
    <bottom>
       <HBox alignment="CENTER" prefHeight="82.0" prefWidth="600.0" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
@@ -32,4 +24,7 @@
          </children>
       </HBox>
    </bottom>
+   <center>
+      <BorderPane fx:id="BPferia" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
 </BorderPane>

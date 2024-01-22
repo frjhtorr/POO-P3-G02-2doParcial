@@ -9,9 +9,14 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -30,12 +35,10 @@ public class VerInfoFeriaController implements Initializable {
     private Button verStandsButton;
     @FXML
     private Button backButton;
-    @FXML
-    private VBox vb;
-    @FXML
-    private Label lblNC;
     
     private Feria fs;
+    @FXML
+    private BorderPane BPferia;
 
     /**
      * Initializes the controller class.
@@ -44,7 +47,11 @@ public class VerInfoFeriaController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         accionesBotones();
         fs = MenuFeriasController.fs;
-        
+          VBox feriavb = new VBox();
+          feriavb.getChildren().addAll(new Text("Nombre: "+fs.getNombre()),new Text("Codigo: "+fs.getCodFeria()) , new Text("Inicia: "+fs.getFechaIni()+"Finaliza: "+fs.getFechaFin()) , new Text("Con Horario: "+fs.getHorario()) , new Text("Realizado en: "+fs.getLugar()) );
+          BPferia.setCenter(feriavb);
+          BPferia.setTop(new Text("Feria"));
+              
     }  
     private void switchToFerias() throws Exception{
         App.setRoot("MenuFerias");   
@@ -52,7 +59,6 @@ public class VerInfoFeriaController implements Initializable {
     private void switchToMenuVerEmp() throws Exception{
         App.setRoot("MenuVerEmprendedores");   
     }
-    @FXML
     private void switchToStands() throws Exception{
         App.setRoot("MenuStands");   
     }
